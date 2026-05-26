@@ -132,77 +132,189 @@
     /* PAGE 2 */
 
     #page2 {
-      background: linear-gradient(135deg, #4a2d5c, #111827);
+      background: radial-gradient(circle at top, #5b3b7a, #0b1020 70%);
       overflow: hidden;
     }
 
     .message-box {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
-      padding: 40px;
-      border-radius: 25px;
-      max-width: 700px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-      animation: softMove 4s ease-in-out infinite;
+      position: relative;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(18px);
+      padding: 50px;
+      border-radius: 35px;
+      max-width: 760px;
+      box-shadow:
+        0 0 40px rgba(255,192,203,0.15),
+        0 20px 60px rgba(0,0,0,0.45);
+      overflow: hidden;
+      animation: floatCard 5s ease-in-out infinite;
     }
 
-    @keyframes softMove {
+    .message-box::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 35px;
+      padding: 2px;
+      background: linear-gradient(45deg,#ffb3d9,#c084fc,#7dd3fc);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.7;
+    }
+
+    @keyframes floatCard {
       0%,100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
+      50% { transform: translateY(-10px); }
     }
 
     .message-box h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #ffd1ea;
+      font-size: 3rem;
+      margin-bottom: 25px;
+      color: #ffd5ee;
+      text-shadow: 0 0 15px rgba(255,192,203,0.5);
+      animation: glowText 2s infinite alternate;
+    }
+
+    @keyframes glowText {
+      from { letter-spacing: 1px; }
+      to { letter-spacing: 3px; }
     }
 
     .message-box p {
-      line-height: 1.8;
+      line-height: 2;
       font-size: 1.2rem;
-      color: #f3f3f3;
+      color: #f8f8f8;
+    }
+
+    .floating-lights span {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 0 15px white;
+      animation: particles 6s linear infinite;
+    }
+
+    @keyframes particles {
+      from {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      30% {
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-120vh) scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    .cat-scene {
+      position: relative;
+      margin-top: 40px;
+      width: 260px;
+      height: 220px;
     }
 
     .cat {
-      font-size: 100px;
-      margin-top: 30px;
-      animation: cry 2s infinite;
-      position: relative;
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 140px;
+      animation: catFloat 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 25px rgba(255,255,255,0.15));
+    }
+
+    .cat::before {
+      content: '';
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,192,203,0.2), transparent 70%);
+      animation: auraPulse 3s infinite;
+      z-index: -1;
+    }
+
+    @keyframes auraPulse {
+      0%,100% {
+        transform: scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: scale(1.25);
+        opacity: 1;
+      }
+    }
+
+    @keyframes catFloat {
+      0%,100% {
+        transform: translateY(0px) rotate(-2deg);
+      }
+      50% {
+        transform: translateY(12px) rotate(2deg);
+      }
     }
 
     .tear {
       position: absolute;
-      width: 10px;
-      height: 20px;
-      background: #7dd3fc;
+      width: 14px;
+      height: 28px;
+      background: linear-gradient(#bae6fd,#38bdf8);
       border-radius: 50%;
-      animation: tearDrop 1.5s infinite;
+      box-shadow: 0 0 14px #38bdf8;
     }
 
     .tear1 {
-      left: 35px;
-      top: 60px;
+      left: 82px;
+      top: 85px;
+      animation: cinematicTear 1.7s infinite;
     }
 
     .tear2 {
-      right: 35px;
-      top: 60px;
-      animation-delay: 0.5s;
+      right: 82px;
+      top: 85px;
+      animation: cinematicTear 1.7s infinite 0.8s;
     }
 
-    @keyframes cry {
-      0%,100% { transform: translateY(0px); }
-      50% { transform: translateY(6px); }
-    }
-
-    @keyframes tearDrop {
-      from {
-        transform: translateY(0);
+    @keyframes cinematicTear {
+      0% {
+        transform: translateY(0px) scale(0.8);
+        opacity: 0;
+      }
+      15% {
         opacity: 1;
       }
+      100% {
+        transform: translateY(90px) scale(1.3);
+        opacity: 0;
+      }
+    }
+
+    .broken-hearts span {
+      position: absolute;
+      color: rgba(255,255,255,0.15);
+      font-size: 28px;
+      animation: heartsFloat 10s linear infinite;
+    }
+
+    @keyframes heartsFloat {
+      from {
+        transform: translateY(120vh) rotate(0deg);
+      }
       to {
-        transform: translateY(40px);
+        transform: translateY(-140vh) rotate(360deg);
+      }
+    }
+      100% {
+        transform: translateY(55px) scaleY(1.4);
         opacity: 0;
       }
     }
@@ -240,17 +352,99 @@
       border-top-right-radius: 50% 30px;
     }
 
-    .sheep {
+    .sheep-face {
       position: absolute;
-      bottom: 100px;
-      font-size: 100px;
-      animation: walk 12s linear infinite;
+      bottom: 40px;
+      width: 320px;
+      height: 320px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 220px;
+      animation: sheepIdle 4s ease-in-out infinite;
+      filter: drop-shadow(0 20px 35px rgba(0,0,0,0.25));
+      z-index: 2;
     }
 
-    @keyframes walk {
-      from {
-        transform: translateX(-200px);
+    .sheep-face::before {
+      content: '';
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.35), transparent 70%);
+      animation: sheepGlow 4s infinite;
+      z-index: -1;
+    }
+
+    @keyframes sheepGlow {
+      0%,100% {
+        transform: scale(1);
+        opacity: 0.5;
       }
+      50% {
+        transform: scale(1.15);
+        opacity: 1;
+      }
+    }
+
+    .grass-chew {
+      position: absolute;
+      width: 70px;
+      height: 22px;
+      background: linear-gradient(90deg,#166534,#22c55e);
+      border-radius: 30px;
+      bottom: 78px;
+      left: 130px;
+      animation: realisticChew 0.35s infinite alternate;
+      box-shadow: 0 0 12px rgba(34,197,94,0.5);
+    }
+
+    .grass-chew::before,
+    .grass-chew::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 25px;
+      background: #22c55e;
+      border-radius: 10px;
+      top: -12px;
+    }
+
+    .grass-chew::before {
+      left: 15px;
+      transform: rotate(-15deg);
+    }
+
+    .grass-chew::after {
+      right: 15px;
+      transform: rotate(15deg);
+    }
+
+    @keyframes realisticChew {
+      from {
+        transform: translateY(0px) scaleX(1);
+      }
+      to {
+        transform: translateY(4px) scaleX(0.88);
+      }
+    }
+
+    @keyframes sheepIdle {
+      0%,100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      25% {
+        transform: translateY(-6px) rotate(-1deg);
+      }
+      75% {
+        transform: translateY(6px) rotate(1deg);
+      }
+    }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
       to {
         transform: translateX(120vw);
       }
@@ -319,7 +513,16 @@
   <div class="error" id="error">Wrong password 😿</div>
 </div>
 
-  </section>  <!-- PAGE 2 -->  <section class="page" id="page2"><div class="message-box">
+  </section>  <!-- PAGE 2 -->  <section class="page" id="page2"><div class="floating-lights">
+  <span style="left:10%; animation-delay:0s;"></span>
+  <span style="left:25%; animation-delay:2s;"></span>
+  <span style="left:45%; animation-delay:4s;"></span>
+  <span style="left:65%; animation-delay:1s;"></span>
+  <span style="left:80%; animation-delay:3s;"></span>
+  <span style="left:92%; animation-delay:5s;"></span>
+</div>
+
+<div class="message-box">
   <h2>I'm Sorry 💔</h2>
 
   <p>
@@ -328,8 +531,17 @@
     I hope this little website can make you smile even a little bit 🌸
   </p>
 
-  <div class="cat">
-    🐱
+  <div class="cat-scene">
+    <div class="broken-hearts">
+      <span style="left:10%; animation-delay:0s;">💔</span>
+      <span style="left:70%; animation-delay:3s;">💔</span>
+      <span style="left:40%; animation-delay:6s;">💔</span>
+    </div>
+
+    <div class="cat">
+      🐱
+    </div>
+
     <div class="tear tear1"></div>
     <div class="tear tear2"></div>
   </div>
@@ -350,7 +562,10 @@
   May happiness fill your heart ✨
 </p>
 
-<div class="sheep">🐑</div>
+<div class="sheep-face">
+  <div class="grass-chew"></div>
+  🐑
+</div>
 <div class="grass"></div>
 
   </section>  <script>
