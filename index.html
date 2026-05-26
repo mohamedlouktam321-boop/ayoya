@@ -1,12 +1,374 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Love Website</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html><html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apology & Eid Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    body {
+      overflow: hidden;
+      background: linear-gradient(135deg, #ffd6e7, #ffeec9);
+      color: white;
+    }
+
+    .page {
+      width: 100vw;
+      height: 100vh;
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+      animation: fadeIn 1s ease;
+    }
+
+    .active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* PAGE 1 */
+
+    #page1 {
+      background: linear-gradient(135deg, #ffb6d9, #ffc8a2);
+      overflow: hidden;
+    }
+
+    .floating-hearts span {
+      position: absolute;
+      color: rgba(255,255,255,0.5);
+      font-size: 20px;
+      animation: float 8s linear infinite;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh) rotate(0deg);
+      }
+      to {
+        transform: translateY(-120vh) rotate(360deg);
+      }
+    }
+
+    .login-box {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+
+    input {
+      width: 250px;
+      padding: 15px;
+      border: none;
+      outline: none;
+      border-radius: 15px;
+      margin-top: 15px;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 15px;
+      background: white;
+      color: #ff6aa8;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      background: #ffe5ef;
+    }
+
+    .error {
+      margin-top: 15px;
+      color: #fff;
+      font-weight: bold;
+      display: none;
+    }
+
+    /* PAGE 2 */
+
+    #page2 {
+      background: linear-gradient(135deg, #4a2d5c, #111827);
+      overflow: hidden;
+    }
+
+    .message-box {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 25px;
+      max-width: 700px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      animation: softMove 4s ease-in-out infinite;
+    }
+
+    @keyframes softMove {
+      0%,100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .message-box h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ffd1ea;
+    }
+
+    .message-box p {
+      line-height: 1.8;
+      font-size: 1.2rem;
+      color: #f3f3f3;
+    }
+
+    .cat {
+      font-size: 100px;
+      margin-top: 30px;
+      animation: cry 2s infinite;
+      position: relative;
+    }
+
+    .tear {
+      position: absolute;
+      width: 10px;
+      height: 20px;
+      background: #7dd3fc;
+      border-radius: 50%;
+      animation: tearDrop 1.5s infinite;
+    }
+
+    .tear1 {
+      left: 35px;
+      top: 60px;
+    }
+
+    .tear2 {
+      right: 35px;
+      top: 60px;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes cry {
+      0%,100% { transform: translateY(0px); }
+      50% { transform: translateY(6px); }
+    }
+
+    @keyframes tearDrop {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+    }
+
+    /* PAGE 3 */
+
+    #page3 {
+      background: linear-gradient(180deg, #7dd3fc 0%, #86efac 100%);
+      overflow: hidden;
+    }
+
+    .eid-title {
+      font-size: 4rem;
+      color: white;
+      text-shadow: 0 5px 15px rgba(0,0,0,0.25);
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.05);
+      }
+    }
+
+    .grass {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 180px;
+      background: #16a34a;
+      border-top-left-radius: 50% 30px;
+      border-top-right-radius: 50% 30px;
+    }
+
+    .sheep {
+      position: absolute;
+      bottom: 100px;
+      font-size: 100px;
+      animation: walk 12s linear infinite;
+    }
+
+    @keyframes walk {
+      from {
+        transform: translateX(-200px);
+      }
+      to {
+        transform: translateX(120vw);
+      }
+    }
+
+    .stars span {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      animation: sparkle 3s infinite alternate;
+    }
+
+    @keyframes sparkle {
+      from {
+        opacity: 0.2;
+        transform: scale(1);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1.8);
+      }
+    }
+
+    .next-btn {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+    }
+
+    @media (max-width: 700px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .message-box h2 {
+        font-size: 2rem;
+      }
+
+      .message-box p {
+        font-size: 1rem;
+      }
+
+      .eid-title {
+        font-size: 2.5rem;
+      }
+    }
+  </style></head>
+<body>  <!-- PAGE 1 -->  <section class="page active" id="page1"><div class="floating-hearts">
+  <span style="left:10%; animation-delay:0s;">❤</span>
+  <span style="left:30%; animation-delay:2s;">❤</span>
+  <span style="left:50%; animation-delay:4s;">❤</span>
+  <span style="left:70%; animation-delay:1s;">❤</span>
+  <span style="left:90%; animation-delay:3s;">❤</span>
+</div>
+
+<div class="login-box">
+  <h1>Enter Password ✨</h1>
+  <p>cute little secret website 💖</p>
+
+  <input type="password" id="password" placeholder="Password..." />
+  <br>
+  <button onclick="checkPassword()">Open 🌸</button>
+
+  <div class="error" id="error">Wrong password 😿</div>
+</div>
+
+  </section>  <!-- PAGE 2 -->  <section class="page" id="page2"><div class="message-box">
+  <h2>I'm Sorry 💔</h2>
+
+  <p>
+    I know maybe I hurt your feelings and I'm really sorry...<br><br>
+    You mean so much to me and I never wanted sadness between us.<br><br>
+    I hope this little website can make you smile even a little bit 🌸
+  </p>
+
+  <div class="cat">
+    🐱
+    <div class="tear tear1"></div>
+    <div class="tear tear2"></div>
+  </div>
+</div>
+
+<button class="next-btn" onclick="nextPage()">Next ➜</button>
+
+  </section>  <!-- PAGE 3 -->  <section class="page" id="page3"><div class="stars">
+  <span style="top:10%; left:20%;"></span>
+  <span style="top:15%; left:50%;"></span>
+  <span style="top:25%; left:70%;"></span>
+  <span style="top:18%; left:85%;"></span>
+  <span style="top:8%; left:40%;"></span>
+</div>
+
+<h1 class="eid-title">🌙 Eid Mubarak 🌙</h1>
+<p style="font-size:1.4rem; margin-top:20px; color:white;">
+  May happiness fill your heart ✨
+</p>
+
+<div class="sheep">🐑</div>
+<div class="grass"></div>
+
+  </section>  <script>
+    function checkPassword() {
+      const password = document.getElementById('password').value;
+      const error = document.getElementById('error');
+
+      if (password === '0121') {
+        document.getElementById('page1').classList.remove('active');
+        document.getElementById('page2').classList.add('active');
+      } else {
+        error.style.display = 'block';
+      }
+    }
+
+    function nextPage() {
+      document.getElementById('page2').classList.remove('active');
+      document.getElementById('page3').classList.add('active');
+    }
+  </script></body>
 </html>
